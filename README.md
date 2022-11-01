@@ -1,1 +1,1 @@
-# My-SICP-Solutions
+# SICP-Solutions
