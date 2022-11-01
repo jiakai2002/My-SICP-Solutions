@@ -1,1 +1,1 @@
-# Wizard-book
+# Wizard book solutions
