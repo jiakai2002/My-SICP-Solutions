@@ -1,0 +1,13 @@
+(define (same-parity . a)
+  
+  (define (parity-iter test a)
+    (cond(test(car a))(cons(car a)(parity-iter test (cdr a)))
+         (parity-iter test (cdr a))
+         (else('()))))
+  
+  (if (even?(car a))
+      (parity-iter even? a)
+      (parity-iter odd? a)))
+
+display (same-parity (list 1 2 3 4 5))
+  
