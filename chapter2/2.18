@@ -1,1 +1,9 @@
+
+
+
 (define (reverse items)
+  (define (reverse-iter n)
+    (if (< n 0)
+      nil
+      (cons (list-ref items n) (reverse-iter (- n 1))))
+  (reverse-iter (length items))
