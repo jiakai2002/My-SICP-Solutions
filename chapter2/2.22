@@ -7,7 +7,7 @@
 # the second iteration cons (nil 1st) to 2nd item, creating a backwards sequence of nested pairs or a backwards list
 # result is e.g. (((nil 1st) 2nd) 3rd)
 
-'''(define (square x)
+(define (square x)
   (* x x))
 
 (define (square-things things)
@@ -19,4 +19,4 @@
   (iter things '()))
 
 display (square-things (list 1 2 3 4))
-((((() . 1) . 4) . 9) . 16)'''
+((((() . 1) . 4) . 9) . 16)
