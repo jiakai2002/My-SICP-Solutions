@@ -1,13 +1,14 @@
 (define (same-parity . a)
   
   (define (parity-iter test a)
-    (cond(test(car a))(cons(car a)(parity-iter test (cdr a)))
-         (parity-iter test (cdr a))
-         (else('()))))
+    (if(null? a)a
+         (if(test(car a))(cons(car a)(parity-iter test (cdr a)))
+            (parity-iter test (cdr a)))))
   
   (if (even?(car a))
       (parity-iter even? a)
       (parity-iter odd? a)))
 
-display (same-parity (list 1 2 3 4 5))
-  
+display (same-parity 2 1 3 4)
+
+#no idea why but cond else won't work (in body of parity-iter)
