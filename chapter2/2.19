@@ -20,3 +20,14 @@
   (null? coin-values))
 
 display (cc 100 (list 50 25 10 5 1))
+display (cc 100 (list 10 5 1 25 50))
+
+#Order of the list does not matter.
+
+If we look at a pair of coins, i.e (list 1 5)
+ways to make 100 = ways to make 100 without 1c + ways to make 100 using 1c
+                 = ways to make 100 without 5c + ways to make 100 using 5c
+Hence, order does not matter in a pair.
+
+We apply the same reasoning to (list 1 5 6) by looking at (1 5) and (6) as a pair.
+Then repeat this for (list 1 5 10 25), with (1 5 10) and (25) a pair, so on and so forth.
