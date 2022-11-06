@@ -1,0 +1,6 @@
+#An example is to return a boolean value for each item to check if even.
+
+(for-each (lambda (x)
+          (if (even? x)true
+              false))
+          (list 1 2 3 4))
