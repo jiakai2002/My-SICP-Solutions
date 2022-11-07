@@ -1,0 +1,12 @@
+#hard one, the idea is to build the tree from right to left
+
+(define (fringe items)
+  (define (fringe-iter items result)
+    (cond ((null? items) result)     
+          ((not(pair? items)) (cons items result))
+          (else (fringe-iter (car items)
+                             (fringe-iter (cdr items) result)))))                    
+ (fringe-iter items '()))
+
+
+ display (fringe (list 1 (list 2 3)))
