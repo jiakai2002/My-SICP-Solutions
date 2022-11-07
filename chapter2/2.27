@@ -1,0 +1,17 @@
+#for deep-reverse, we need to consider nested lists
+#we can use pair? to check for a nested list, and call reverse on it
+
+(define (length items)
+    (define (length-iter a count)
+        (if (null? a)
+            count
+            (length-iter (cdr a) (+ 1 count))))
+    (length-iter items 0))
+
+(define (reverse items)
+  (define (reverse-iter n)
+    (cond (< n 0) '()
+          (pair? list-ref items n) reverse (list-ref items n)        
+          (else (cons (list-ref items n) (reverse-iter (- n 1)))))
+  (reverse-iter (- (length items) 1)))
+  
