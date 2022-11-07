@@ -10,8 +10,10 @@
 
 (define (reverse items)
   (define (reverse-iter n)
-    (cond (< n 0) '()
-          (pair? list-ref items n) reverse (list-ref items n)        
-          (else (cons (list-ref items n) (reverse-iter (- n 1)))))
+    (cond (< n 0)('())
+          (pair? list-ref items n)(reverse (list-ref items n))        
+          (else (cons (list-ref items n) (reverse-iter (- n 1))))))
   (reverse-iter (- (length items) 1)))
+
+display (reverse (list 1 2 3))
   
