@@ -1,0 +1,22 @@
+(define (subsets s)
+  (if (null? s)
+    (list nil)
+    (let ((rest (subsets (cdr s))))
+      (append rest (map ⟨??⟩ rest)))))
+      
+#we can work backwards to see how it should add up
+#for s = (1 2 3): if we reverse cdr, s='(), s=(3), s=(2 3), s=(1 2 3)
+
+s       subsets
+'()     ('())
+(3)     ('() (3))
+(2 3)   ('() (3) (2) (2 3))
+(1 2 3) ('() (3) (2) (2 3) (1) (1 2 3))
+
+(define (subsets s)
+  (if (null? s)
+    (list nil)
+    (let ((rest (subsets (cdr s))))
+      (append rest (map (lambda x)(list (list (car x)) (list x))
+                    rest)))))
+
