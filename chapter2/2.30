@@ -6,6 +6,7 @@
                     
 #map iterates a procedure over all the elements of a list
 #square-tree-2 uses map on sub-trees that are pairs
+#both procedures work the same way, the only difference is map won't need null condition since it wont touch nil value while car cdr will 
 
 (define (square-tree-2 tree)
   (map (lambda (sub-tree)
