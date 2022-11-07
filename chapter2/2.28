@@ -1,4 +1,4 @@
-#hard one, the idea is to build the tree from right to left
+#iterative approach
 
 (define (fringe items)
   (define (fringe-iter items result)
@@ -8,5 +8,13 @@
                              (fringe-iter (cdr items) result)))))                    
  (fringe-iter items '()))
 
+display (fringe (list 1 2 (list 3 4)))
 
- display (fringe (list 1 (list 2 3)))
+#a simple solution using append
+
+(define (fringe items) 
+  (cond ((null? items) items) 
+        ((pair? items) (append (fringe (car items))(fringe (cdr items))))
+        (else (list items))))                      
+        
+display (fringe (list 1 2(list 3 4)))
