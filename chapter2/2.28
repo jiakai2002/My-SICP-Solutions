@@ -10,7 +10,7 @@
 
 display (fringe (list 1 2 (list 3 4)))
 
-#a simple solution using append
+#a simple solution by recursing over car and cdr on trees to reveal elements and append them
 
 (define (fringe items) 
   (cond ((null? items) items) 
@@ -18,3 +18,15 @@ display (fringe (list 1 2 (list 3 4)))
         (else (list items))))                      
         
 display (fringe (list 1 2(list 3 4)))
+
+#to visualize the breakdown by cons and cdr, we draw a tree diagram with each left branch being car and right branch being cdr of the main branch
+      (1 (2))
+ car  /    \  cdr
+     1     ((2))
+            /  \ 
+          (2)  nil
+          / \  
+         2  nil
+         
+#nil values get ignored by append, pair values get opened up into car and cdr, numbers get appended
+          
