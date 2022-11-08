@@ -1,0 +1,16 @@
+#(accumulate op initial sequence)
+#map returns a list of elements of the sequence with p applied
+  
+(define (map p sequence)
+  (accumulate (lambda (x y) (cons (p x) y)) nil sequence))
+___________________________________________________________________
+#initial is seq2 and sequence to cons is seq1
+#forms a sequence of nested cons for elements in seq1, which cons to seq2
+
+(define (append seq1 seq2)
+  (accumulate cons ⟨seq2⟩ ⟨seq1))
+____________________________________________________________________
+#+1 for each element in sequence
+
+(define (length sequence)
+  (accumulate (lambda (x y) (+ 1 y)) 0 sequence))
