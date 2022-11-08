@@ -1,0 +1,13 @@
+#enumerate-tree flattens the tree and gives a list
+#map a procedure to replace each element with 1
+
+(define (count-leaves t)
+ (accumulate + 0 (map (lambda x 1) (enumerate-tree t)))
+  
+#OR: map enumerate-tree over t so you will get a list of lists, op will +length
+
+(define (count-leaves t) 
+ (accumulate (lambda (x y) (+ (length x) y)) 0 (map enumerate-tree t))) 
+ 
+ #without enumerate-tree:
+ 
