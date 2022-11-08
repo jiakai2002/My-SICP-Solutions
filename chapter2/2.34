@@ -1,0 +1,7 @@
+#reversing this (. . . (anx + an−1)x + · · · + a1)x + a0, we get:
+#a0 + x(a1 + x(... an-1 + x(an) ... )
+
+(define (horner-eval x coefficient-sequence)
+  (accumulate (lambda (this-coeff higher-terms) (+ this-coeff (x*higher-terms)))
+              0
+              coefficient-sequence))
