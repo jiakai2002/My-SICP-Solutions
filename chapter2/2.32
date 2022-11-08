@@ -4,19 +4,44 @@
     (let ((rest (subsets (cdr s))))
       (append rest (map ⟨??⟩ rest)))))
       
-#we can work backwards to see how it should add up
-#for s = (1 2 3): if we reverse cdr, s='(), s=(3), s=(2 3), s=(1 2 3)
+#the logic is that the set of all subsets = set of all subsets excluding the first number +
+                                            set of all subset excluding the first number, with the first number reinserted to each subset
 
-s       subsets
-'()     ('())
-(3)     ('() (3))
-(2 3)   ('() (3) (2) (2 3))
-(1 2 3) ('() (3) (2) (2 3) (1) (1 2 3))
+#we use wishful thinking to work backwards: cdr back and work out the set of subsets
+
+set of subsets of '()     => ('())
+set of subsets of (3)     => ('() (3))
+set of subsets of (2 3)   => ('() (3) (2) (2 3))
+set of subsets of (1 2 3) => ('() (3) (2) (2 3) (1) (1 3) (1 2) (1 2 3))
+
+#if we compare subsets of (3) and subsets of (2 3), we realize that 2 was inserted to each subset in the set of subsets of (3)
+#in other words, map needs to create a set of subsets with the first number inserted to each subset
+#this will then get appended to the current set of subsets to form the next set of subsets
 
 (define (subsets s)
   (if (null? s)
     (list nil)
     (let ((rest (subsets (cdr s))))
-      (append rest (map (lambda x)(list (list (car x)) (list x))
-                    rest)))))
-
+      (append rest (map (lambda x) (cons (car s) x) rest)))))
+      
+      
+#to solidify our understanding, we will work through how the code evolves
+(subsets (1 2 3))
+append (subsets (2 3)) (map (lambda x) (cons 1 x) (subsets (2 3)))     
+             ↓
+        append (subsets (3)) (map (lambda x) (cons 2 x) (subsets (3))) 
+                    ↓
+                append ( ('()) (map lambda x) (cons 3 x) ('()) )      #subset '() returns (list nil)
+                    ↓
+                append ('()) (cons 3 ('()))        
+                append ('()) (3)
+                ('() (3))   
+             ↓
+       append ('() (3)) ((cons 2 '()) (cons 2 (3))
+       append ('() (3)) ((2) (2 3))
+       ('() (3) (2) (2 3))
+             ↓
+append ('() (3) (2) (2 3)) ((cons 1 '()) (cons 1 (3)) (cons 1 (2)) (cons 1 (2 3))
+append ('() (3) (2) (2 3)) ((1) (1 3) (1 2) (1 2 3))
+('() (3) (2) (2 3) (1) (1 3) (1 2) (1 2 3))
+                                
