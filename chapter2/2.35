@@ -9,5 +9,16 @@
 (define (count-leaves t) 
  (accumulate (lambda (x y) (+ (length x) y)) 0 (map enumerate-tree t))) 
  
- #without enumerate-tree:
+ #without enumerate-tree
+ #recurse to call map again on pairs
+ 
+ (define (count-leaves-recursive t) 
+   (accumulate + 0 
+     (map 
+       (lambda (t) 
+         (cond ((null? t) 0) 
+               ((pair? t) (count-leaves-recursive t)) 
+               (else 1))) 
+       t))) 
+      
  
