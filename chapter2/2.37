@@ -1,0 +1,17 @@
+(define (dot-product v w)
+  (accumulate + 0 (map * v w)))
+
+#work backwards to see that matrix-*-vector is successive dot-products between v and vectors in m
+#so simply map dot-product onto each vector list in matrix
+
+(define (matrix-*-vector m v)
+  (map (lambda x (dot-product v x)) m))
+  
+(define (transpose mat)
+  (accumulation-n cons 0 mat))
+  
+#we first tranpose n, then map dot-product on each vector in m
+
+(define (matrix-*-matrix m n)
+  (let ((cols (transpose n))
+    (map (lambda x (dot-product x cols) m))))) 
