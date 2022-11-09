@@ -1,9 +1,20 @@
 #fold-right and fold-left are accumulators
 #f-r applies op from right to left
 #f-l applies op from left to right
+#cons can only work for f-l, need append for f-r
+#cons list number => e.g. cons (1) 2 = ((1) 2)
+#cons number list => e.g. cons 2 (1) = (2 1)
 
 (define (reverse sequence)
   (fold-right (lambda (x y) (append y (list x)) nil sequence))
-  
+
+reverse (1 2 3)
+append (f-r (2 3)) (1) 
+append (append (f-r (2)) (3)) (1)
+append (append (append (2) ('())) (3)) (1))
+append (append ((2))
+
+
+
 (define (reverse sequence)
   (fold-left (lambda (x y) cons y x) nil sequence) 
