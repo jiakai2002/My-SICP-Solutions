@@ -1,0 +1,9 @@
+#fold-right and fold-left are accumulators
+#f-r applies op from right to left
+#f-l applies op from left to right
+
+(define (reverse sequence)
+  (fold-right (lambda (x y) cons y x) nil sequence))
+  
+(define (reverse sequence)
+  (fold-left (lambda (x y) ⟨??⟩) nil sequence) 
