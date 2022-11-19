@@ -1,20 +1,27 @@
-#fold-right and fold-left are accumulators
-#f-r applies op from right to left
-#f-l applies op from left to right
-#cons can only work for f-l, need append for f-r
-#cons list number => e.g. cons (1) 2 = ((1) 2)
-#cons number list => e.g. cons 2 (1) = (2 1)
+#f-l is a straight-forward iterative process, to reverse it just swap the args of cons
+#(cons car result) -> "adding elements from the left" instead of (cons result car) -> "adding elements from the right"
+
+(define (reverse sequence)
+  (fold-left (lambda (x y) cons y x) nil sequence) 
+
+
+#f-r: op(car x)(op(car y)(op (car z))...
+e.g. 
+cons(1 (cons 2 (cons 3 nil)))
+cons(1 (cons 2 (3)))
+cons(1 (2 3))
+(1 2 3)
+#f-r cons numbers to list 
+#say we were to use the same approach as f-l, we would be doing cons list to numbers, that creates nested lists
+#to solve this, simply use append instead of cons to have only 1 list at anytime.
+#we also need to start with (list x) since we dont have cons to create an initial list
 
 (define (reverse sequence)
   (fold-right (lambda (x y) (append y (list x)) nil sequence))
 
+e.g.
 reverse (1 2 3)
 append (f-r (2 3)) (1) 
 append (append (f-r (2)) (3)) (1)
 append (append (append (2) ('())) (3)) (1))
 append (append ((2))
-
-
-
-(define (reverse sequence)
-  (fold-left (lambda (x y) cons y x) nil sequence) 
