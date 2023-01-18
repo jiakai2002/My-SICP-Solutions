@@ -2,6 +2,7 @@
 #      proc            args--->
 #(lambda (ft k) (...)) (lambda (ft k) (...)) n 
 #(* 10 (lambda (ft k)(...)) (lambda (ft k)(...)) (- n 1))
+#instead of using define, this trick uses a series of lambdas with the first lambda acting as an args feeder
 
 
 ((lambda (n)
