@@ -1,8 +1,0 @@
-(controller
-  test-c
-    (test (op >)(reg c)(cost n))
-    (branch (label fact-done))
-    (assign c (op +)(reg c)(cost 1))
-    (assign p (op *)(reg p)(reg c))
-    (goto (label test-c))
-  fact-done)
